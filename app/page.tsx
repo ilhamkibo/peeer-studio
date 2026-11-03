@@ -1,69 +1,245 @@
 import Image from "next/image";
+import Link from "next/link";
+import residence from "@/public/images/projects/rayshouse.png";
+import cafe from "@/public/images/projects/moodandtonecoffeeshop.png";
+import { ProjectImage, Reveal } from "./components/portfolio";
+import { SiteFooter, SiteHeader } from "./components/site-chrome";
+import { practices } from "./lib/work";
+
+function Arrow({ diagonal = false }: { diagonal?: boolean }) {
+  return <span aria-hidden="true">{diagonal ? "↗" : "↘"}</span>;
+}
+
+function SectionLabel({
+  number,
+  children,
+}: {
+  number: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <p className="section-label">
+      <span>{number}</span>
+      {children}
+    </p>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <>
+      <SiteHeader home />
+      <main id="main">
+        <section className="hero page-gutter" aria-labelledby="hero-heading">
+          <div className="hero-eyebrow">
+            <span className="status-dot" />
+            PEEER STUDIO
+            <span className="hero-established">EST. 2024 — JAKARTA</span>
+          </div>
+          <h1 id="hero-heading">
+            Architecture
+            <span className="hero-second-line">
+              <span className="hero-amp">&</span> interior studio
+              <span className="full-stop">.</span>
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+          <div className="hero-bottom">
+            <div className="hero-note">
+              <p>
+                Space for
+                <br />a different perspective.
+              </p>
+              <a className="text-link" href="#work">
+                Explore our work <Arrow />
+              </a>
+            </div>
+            <figure className="hero-image">
+              <Image
+                src={residence}
+                alt="Warm residential interior with sculptural seating, timber cabinetry, and pendant lighting"
+                sizes="(max-width: 700px) 92vw, 72vw"
+                preload
+              />
+              <figcaption>
+                <span>A study in space, light & material</span>
+                <span>01 / 02</span>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+        <section
+          className="work page-gutter"
+          id="work"
+          aria-labelledby="work-heading"
+        >
+          <div className="section-top">
+            <SectionLabel number="01">Selected work</SectionLabel>
+            <span className="micro">RESIDENTIAL / COMMERCIAL</span>
+          </div>
+          <Reveal>
+            <div className="section-heading">
+              <h2 id="work-heading">
+                Different spaces.
+                <br />
+                <span>A shared perspective.</span>
+              </h2>
+              <p>
+                A closer look at our work
+                <br />
+                across interiors and architecture.
+              </p>
+            </div>
+          </Reveal>
+          <div className="projects">
+            <Reveal className="project project-residence">
+              <ProjectImage
+                image={residence}
+                alt="Residential interior with cream seating, a textured rug, timber finishes, and an open kitchen"
+                label="Residential interior"
+              />
+              <div className="project-caption">
+                <div>
+                  <span className="micro">01 — INTERIOR</span>
+                  <h3>
+                    <Link href="/projects/residential-interior">
+                      Residential interior{" "}
+                      <span className="sr-only">— explore project</span>
+                    </Link>
+                  </h3>
+                </div>
+                <span className="project-caption-arrow" aria-hidden="true">
+                  ↗
+                </span>
+              </div>
+            </Reveal>
+            <Reveal className="project project-cafe">
+              <ProjectImage
+                image={cafe}
+                alt="Café façade shown at dusk and in daylight, with outdoor seating and a pitched roof"
+                label="Café exterior"
+              />
+              <div className="project-caption">
+                <div>
+                  <span className="micro">02 — ARCHITECTURE</span>
+                  <h3>
+                    <Link href="/projects/cafe-exterior">
+                      Café exterior{" "}
+                      <span className="sr-only">— explore project</span>
+                    </Link>
+                  </h3>
+                </div>
+                <span className="project-caption-arrow" aria-hidden="true">
+                  ↗
+                </span>
+              </div>
+            </Reveal>
+          </div>
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            className="text-link instagram-link"
+            href="https://www.instagram.com/peeer.studio/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
+            More from the studio on Instagram <Arrow diagonal />
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        </section>
+        <section
+          className="studio"
+          id="studio"
+          aria-labelledby="studio-heading"
+        >
+          <div className="studio-inner page-gutter">
+            <SectionLabel number="02">The studio</SectionLabel>
+            <Reveal>
+              <h2 id="studio-heading">
+                A fresh eye.
+                <br />
+                An open mind.
+                <br />
+                <span>A different Peeer.</span>
+              </h2>
+            </Reveal>
+            <div className="studio-description">
+              <p>
+                Peeer Studio is an architecture and interior design studio based
+                in Jakarta, Indonesia.
+              </p>
+              <p>
+                Established in 2024, our practice spans commercial and
+                residential architecture, interior design, and architectural
+                planning.
+              </p>
+              <a className="text-link" href="#contact">
+                Get to know us <Arrow diagonal />
+              </a>
+            </div>
+            <div className="studio-footnote">
+              <span>BASED IN JAKARTA</span>
+              <span>OPEN TO POSSIBILITIES</span>
+            </div>
+          </div>
+        </section>
+        <section
+          className="services page-gutter"
+          id="services"
+          aria-labelledby="services-heading"
+        >
+          <SectionLabel number="03">Our practice</SectionLabel>
+          <div className="services-content">
+            <h2 id="services-heading">
+              From the bigger picture
+              <br />
+              to the smallest detail.
+            </h2>
+            <div className="service-list">
+              {practices.map((practice) => (
+                <Link
+                  className="service-row"
+                  key={practice.slug}
+                  href={`/practice/${practice.slug}`}
+                >
+                  <span className="micro">{practice.number}</span>
+                  <h3>{practice.title}</h3>
+                  <Arrow diagonal />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section
+          className="contact page-gutter"
+          id="contact"
+          aria-labelledby="contact-heading"
+        >
+          <div className="section-top">
+            <SectionLabel number="04">Start a conversation</SectionLabel>
+            <span className="micro">JAKARTA, INDONESIA</span>
+          </div>
+          <h2 id="contact-heading">
+            Have a space
+            <br />
+            in mind<span>?</span>
+          </h2>
+          <div className="contact-bottom">
+            <p>Let’s explore its possibilities.</p>
+            <a className="contact-link" href="tel:+6282132553763">
+              Let’s talk <Arrow diagonal />
+            </a>
+          </div>
+          <div className="contact-details">
+            <span>M. Farras Oktavianto</span>
+            <a href="tel:+6282132553763">+62 821-3255-3763</a>
+            <a
+              href="https://www.instagram.com/peeer.studio/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @peeer.studio <Arrow diagonal />
+            </a>
+          </div>
+        </section>
       </main>
-    </div>
+      <SiteFooter />
+    </>
   );
 }

@@ -52,3 +52,26 @@ and residential projects.
 - Propose creative alternatives when appropriate.
 - Do not implement major design changes without
   discussing the direction first.
+
+
+## Studio Brand Context
+Before making design decisions:
+- Read docs/studio-profile.md
+- Inspect the studio logo in public/images/
+- Use the studio's actual identity as the foundation
+  of the visual design.
+- Derive typography, composition, and color
+  recommendations from the brand identity.
+- Do not invent company history or projects.
+- Preserve the original logo proportions.
+- Prioritize creative, premium architectural design.
+
+## Brand Assets
+- Studio logo: public/images/studio-logo.png
+- Project photography: public/images/projects/
+
+## Design Instructions
+- Analyze the existing studio logo before designing.
+- Preserve the logo's original proportions.
+- Use the logo's visual identity to guide the design.
+- Do not modify or recreate the original logo.
