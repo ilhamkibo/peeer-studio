@@ -1,27 +1,23 @@
 {
-  "name": "architecture-studio",
+  "name": "peeer-studio",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "motion": "^14.6.0",
-    "next": "16.4.3",
-    "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "dev": "concurrently --kill-others-on-fail --names web,api --prefix-colors cyan,magenta \"npm run dev --workspace @peeer/web\" \"npm run dev --workspace @peeer/api\"",
+    "dev:web": "npm run dev --workspace @peeer/web",
+    "dev:api": "npm run dev --workspace @peeer/api",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "start:web": "npm run start --workspace @peeer/web",
+    "start:api": "npm run start:prod --workspace @peeer/api"
   },
   "devDependencies": {
-    "@tailwindcss/turbopack": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.4.3",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "concurrently": "^9.2.1"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
