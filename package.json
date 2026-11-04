@@ -6,12 +6,14 @@
     "apps/*"
   ],
   "scripts": {
-    "dev": "concurrently --kill-others-on-fail --names web,api --prefix-colors cyan,magenta \"npm run dev --workspace @peeer/web\" \"npm run dev --workspace @peeer/api\"",
+    "dev": "concurrently --kill-others-on-fail --names web,admin,api --prefix-colors cyan,yellow,magenta \"npm run dev --workspace @peeer/web\" \"npm run dev --workspace @peeer/admin\" \"npm run dev --workspace @peeer/api\"",
     "dev:web": "npm run dev --workspace @peeer/web",
+    "dev:admin": "npm run dev --workspace @peeer/admin",
     "dev:api": "npm run dev --workspace @peeer/api",
     "build": "npm run build --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "start:web": "npm run start --workspace @peeer/web",
+    "start:admin": "npm run start --workspace @peeer/admin",
     "start:api": "npm run start:prod --workspace @peeer/api"
   },
   "devDependencies": {

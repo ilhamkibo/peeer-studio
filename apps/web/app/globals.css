@@ -17,7 +17,7 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 30px;
+  scroll-padding-top: 0;
 }
 body {
   margin: 0;
@@ -223,6 +223,9 @@ h1 {
 .work {
   padding-top: 124px;
   padding-bottom: 110px;
+}
+.work #work {
+  scroll-margin-top: 48px;
 }
 .section-top {
   display: flex;
@@ -680,6 +683,9 @@ h1 {
   .work {
     padding-top: 80px;
     padding-bottom: 65px;
+  }
+  .work #work {
+    scroll-margin-top: 32px;
   }
   .section-top > .micro {
     font-size: 8px;

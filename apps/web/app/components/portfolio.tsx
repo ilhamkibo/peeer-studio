@@ -53,6 +53,7 @@ export function ProjectImage({
   return (
     <>
       <button
+        type="button"
         className="project-image"
         onClick={() => setOpen(true)}
         aria-label={`Enlarge ${label.toLowerCase()} image`}
@@ -67,6 +68,9 @@ export function ProjectImage({
         ref={dialog}
         className="image-dialog"
         onClose={() => setOpen(false)}
+        onKeyDown={(event) => {
+          if (event.key === "Escape") close();
+        }}
         onClick={(event) => {
           if (event.target === event.currentTarget) close();
         }}
@@ -74,7 +78,7 @@ export function ProjectImage({
       >
         <div className="dialog-heading">
           <span>{label}</span>
-          <button onClick={close} autoFocus aria-label="Close image">
+          <button type="button" onClick={close} aria-label="Close image">
             Close <span aria-hidden="true">×</span>
           </button>
         </div>

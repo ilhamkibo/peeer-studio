@@ -69,10 +69,9 @@ export default function Home() {
         </section>
         <section
           className="work page-gutter"
-          id="work"
           aria-labelledby="work-heading"
         >
-          <div className="section-top">
+          <div className="section-top" id="work">
             <SectionLabel number="01">Selected work</SectionLabel>
             <span className="micro">RESIDENTIAL / COMMERCIAL</span>
           </div>

@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProjectPage({ params }: Props) {
   const project = getProject((await params).slug);
   if (!project) notFound();
-  const practice = getPractice(project.practiceSlug)!;
+  const practice = getPractice(project.practiceSlug);
+  if (!practice) notFound();
   const next = projects[(projects.indexOf(project) + 1) % projects.length];
   return (
     <>
